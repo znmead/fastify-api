@@ -1,21 +1,27 @@
 //Import our controllers
-const carController = require('../controllers/carController')
+import { 
+    getCars, 
+    getCar, 
+    addCar, 
+    updateCar, 
+    deleteCar 
+} from '../controllers/carController'
 
 const routes = [
     {
         method: 'GET',
-        url: '/cars',
-        handler: carController.getCars
+        url: '/api/cars',
+        handler: getCars
     },
     {
         method: 'GET',
-        url: '/cars/:id',
-        handler: carController.getCar
+        url: '/api/cars/:id',
+        handler: getCar
     },
     {
         method: 'POST',
-        url: '/cars',
-        handler: carController.addCar,
+        url: '/api/cars',
+        handler: addCar,
         schema: [{
             body: {
                 make: { type: 'string', required: true },
@@ -38,8 +44,8 @@ const routes = [
     },
     {
         method: 'PUT',
-        url: '/cars/:id',
-        handler: carController.updateCar,
+        url: '/api/cars/:id',
+        handler: updateCar,
         schema: [{
             body: {
                 make: { type: 'string', required: true },
@@ -62,9 +68,9 @@ const routes = [
     },
     {
         method: 'DELETE',
-        url: '/cars/:id',
-        handler: carController.deleteCar
+        url: '/api/cars/:id',
+        handler: deleteCar
     }
 ]
 
-module.exports = routes
+export default routes

@@ -1,7 +1,10 @@
 // External dependencies:
-const mongoose = require('mongoose')
+import { 
+    Schema, 
+    model as _model 
+} from 'mongoose'
 
-const carSchema = new mongoose.Schema({
+const carSchema = new Schema({
     make: String,
     model: String,
     year: Number,
@@ -19,4 +22,4 @@ const carSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('Car', carSchema)
+export default _model('Car', carSchema)

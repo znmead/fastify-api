@@ -1,57 +1,57 @@
 // External dependencies
-const boom = require('@hapi/boom')
+import { boomify } from '@hapi/boom'
 
 // Get Data Models
-const Car = require('../models/car')
+import Car from '../models/car'
 
 // Get all cars
-exports.getCars = async (req, reply) => {
+export async function getCars(req, reply) {
     try {
         const cars = await Car.find()
         return cars
     } catch (err) {
-        throw boom.boomify(err)
+        throw boomify(err)
     }
 }
 
 // Get a single car
-exports.getCar = async (req, reply) => {
+export async function getCar(req, reply) {
     try {
         const car = await Car.findById(req.params.id)
         return car
     } catch (err) {
-        throw boom.boomify(err)
+        throw boomify(err)
     }
 }
 
 // Add a new car
-exports.addCar = async (req, reply) => {
+export async function addCar(req, reply) {
     try {
         const car = new Car(req.body)
         await car.save()
         return car
     } catch (err) {
-        throw boom.boomify(err)
+        throw boomify(err)
     }
 }
 
 // Update a car
-exports.updateCar = async (req, reply) => {
+export async function updateCar(req, reply) {
     try {
         const car = await Car.findByIdAndUpdate(req.params.id, req.body, { new: true })
         return car
     } catch (err) {
-        throw boom.boomify(err)
+        throw boomify(err)
     }
 }
 
 // Delete a car
-exports.deleteCar = async (req, reply) => {
+export async function deleteCar(req, reply) {
     try {
         const car = await Car.findByIdAndRemove(req.params.id)
         return car
     } catch (err) {
-        throw boom.boomify(err)
+        throw boomify(err)
     }
 }
 
