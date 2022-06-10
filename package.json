@@ -1,19 +1,38 @@
 {
   "name": "fastify-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "swagger poc",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/nodemon/bin/nodemon.js ./src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "test": "jest test"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/znmead/fastify-api.git"
+  },
+  "author": "Zach Mead",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/znmead/fastify-api/issues"
+  },
+  "homepage": "https://github.com/znmead/fastify-api#readme",
   "dependencies": {
-    "boom": "^7.3.0",
+    "@fastify/mongodb": "^5.0.0",
+    "@hapi/boom": "^10.0.0",
     "fastify": "^4.0.0",
-    "fastify-swagger": "^5.2.0",
-    "mongoose": "^6.3.6",
-    "nodemon": "^2.0.16"
+    "fastify-cors": "^3.0.0",
+    "fastify-jwt": "^3.0.0",
+    "fastify-swagger": "^3.0.0",
+    "jest": "^26.0.0",
+    "mongoose": "^6.3.6"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.0",
+    "@types/node": "^12.0.0",
+    "@types/swagger-ui-dist": "^3.0.0",
+    "jest": "^26.0.0",
+    "nodemon": "^2.0.16",
+    "swagger-ui-dist": "^3.24.0"
   }
 }
