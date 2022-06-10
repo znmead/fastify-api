@@ -16,7 +16,7 @@ const routes = [
         method: 'POST',
         url: '/cars',
         handler: carController.addCar,
-        schema: {
+        schema: [{
             body: {
                 make: { type: 'string', required: true },
                 model: { type: 'string', required: true },
@@ -34,13 +34,13 @@ const routes = [
                     of: { type: 'string', required: true }
                 }
             }
-        }
+        }]
     },
     {
         method: 'PUT',
         url: '/cars/:id',
         handler: carController.updateCar,
-        schema: {
+        schema: [{
             body: {
                 make: { type: 'string', required: true },
                 model: { type: 'string', required: true },
@@ -58,8 +58,7 @@ const routes = [
                     of: { type: 'string', required: true }
                 }
             }
-        }
-
+        }]
     },
     {
         method: 'DELETE',
