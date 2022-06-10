@@ -3,28 +3,27 @@ const fastify = require('fastify')({
     logger: true
 })
 
-// Variables
-const routes = require('./routes')
-
-routes.forEach((route, index) => {
-    fastify.route(route)
-})
-
 // Require external modules
 const mongoose = require('mongoose')
 
+// Import Routes
+const routes = require('./routes')
 
-// Actions
+// Import Swagger Options
+const swagger = require('./config/swagger')
 
-// Declare a route
-fastify.get('/', async (request, reply) => {
-    return { hello: 'world' }
-})
+// Register Swagger
+fastify.resgister(require('fastify-swagger'), swagger.options)
 
 // Connect to DB
 mongoose.connect('mongodb://localhost/mycargarage')
  .then(() => console.log('MongoDB connected…'))
  .catch(err => console.log(err))
+
+// Iterate over routes
+routes.forEach((route, index) => {
+    fastify.route(route)
+})
 
 // Run the server!
 const start = async () => {
@@ -36,5 +35,11 @@ const start = async () => {
         process.exit(1)
     }
 }
+
+// Hello, world!
+fastify.get('/', async (request, reply) => {
+    return { hello: 'world' }
+})
+
 start()
 
