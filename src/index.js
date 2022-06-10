@@ -1,13 +1,13 @@
-// Variables
-const routes = require('./routes')
-
-routes.forEach(route, index => {
-    fastify.route(route)
-})
-
 // Require the framework and instantiate it
 const fastify = require('fastify')({
     logger: true
+})
+
+// Variables
+const routes = require('./routes')
+
+routes.forEach((route, index) => {
+    fastify.route(route)
 })
 
 // Require external modules
