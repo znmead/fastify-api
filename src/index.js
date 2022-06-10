@@ -1,3 +1,10 @@
+// Variables
+const routes = require('./routes')
+
+routes.forEach(route, index => {
+    fastify.route(route)
+})
+
 // Require the framework and instantiate it
 const fastify = require('fastify')({
     logger: true
@@ -6,6 +13,8 @@ const fastify = require('fastify')({
 // Require external modules
 const mongoose = require('mongoose')
 
+
+// Actions
 
 // Declare a route
 fastify.get('/', async (request, reply) => {
